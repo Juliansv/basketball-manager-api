@@ -38,15 +38,13 @@ class PlayerController extends Controller
     {
         // route --> /players/ (POST)
         // handle POST request to store a new player record on the db table
-        echo ("aca");
-
         $validated = $request->validate([
             'firstName' => 'required|string|min:3|max:255',
             'lastName' => 'required|string|min:3|max:255',
             'height' => 'integer|min:20|max:300',
             'weight' => 'integer|min:20|max:300',
             'birthday' => 'required|date',
-            'team_id' => 'required|exists:teams,id'
+            'team_id' => 'nullable'
         ]);
 
         Player::create($validated);

@@ -9,6 +9,14 @@
     
         <label for="city">Ciudad:</label>
         <input type="text" name="city" value="{{ old('city') }}" id="city" required>
+
+        <label for="coach_id">Entrenador:</label>
+        <select name="coach_id" id="coach_id">
+            <option value="" disabled selected>Elegir un equipo</option>
+            @foreach ($coaches as $coach)
+                <option value="{{$coach->id}}" {{old('coach_id') == $coach->id ? "selected" : ''}} >{{$coach["firstName"] }} {{ $coach["lastName"]}}</option>
+            @endforeach
+        </select>
     
         <button type="submit" class="btn mt-4">Crear equipo</button>
 

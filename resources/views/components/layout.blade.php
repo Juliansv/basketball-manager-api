@@ -20,10 +20,14 @@
             <h1>
                 <a href="{{ route('home') }}">Basquet API</a>
             </h1>
-            <a href="{{ route('players.index') }}">Todos los jugadores</a>
-            <a href="{{ route('teams.index') }}">Todos los equipos</a>
-            <a href="{{ route('players.create') }}">Crear nuevo jugador</a>
-            <a href="{{ route('teams.create') }}">Crear nuevo equipo</a>
+            <x-dropdownMenu>
+                <a href="{{ route('players.index') }}">Todos los jugadores</a>
+                <a href="{{ route('teams.index') }}">Todos los equipos</a>
+                <a href="{{ route('coaches.index') }}">Todos los entrenadores</a>
+                <a href="{{ route('players.create') }}">Crear nuevo jugador</a>
+                <a href="{{ route('teams.create') }}">Crear nuevo equipo</a>
+                <a href="{{ route('coaches.create') }}">Crear nuevo entrenador</a>
+            </x-dropdownMenu>
         </nav>
     </header>
 

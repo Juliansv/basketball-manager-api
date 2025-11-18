@@ -7,11 +7,20 @@
         <p>Fecha de nacimiento: {{ $player->birthday }}</p>
     </div>
 
-    <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
-        <h3>Informacion del equipo</h3>
-        <p><strong>Nombre: {{$player->team->name}}</strong></p>
-        <p><strong>Ciudad: {{$player->team->city}}</strong></p>
-    </div>
+    @if ($player->team) 
+        <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
+            <h3>Informacion del equipo</h3>
+            <p><strong>Nombre: {{$player->team->name}}</strong></p>
+            <p><strong>Ciudad: {{$player->team->city}}</strong></p>
+        </div>
+    @else
+        <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
+            <h3>Informacion del equipo</h3>
+            <p><strong>Nombre: N/A</strong></p>
+            <p><strong>Ciudad: N/A</strong></p>
+        </div>
+    @endif
+
 
     <form action="{{route('players.destroy', $player)}}" method="POST">
         @csrf

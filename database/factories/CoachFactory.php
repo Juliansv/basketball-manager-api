@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Team;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Player>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Coach>
  */
-class PlayerFactory extends Factory
+class CoachFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,10 +20,8 @@ class PlayerFactory extends Factory
         return [
             'firstName' => fake()->firstName(),
             'lastName' => fake()->lastName(),
-            'height' => fake()->numberBetween(150, 200),
-            'weight' => fake()->numberBetween(60, 110),
-            'birthday' => fake()->dateTimeThisCentury(2010),
-            // 'team_id' => Team::inRandomOrder()->first()->id,
+            'birthday' => fake()->dateTimeThisCentury(1990),
+            // 'team_id' => Team::inRandomOrder()->first()->id, 
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Coach;
 
 class TeamController extends Controller
 {
@@ -21,6 +22,7 @@ class TeamController extends Controller
         // route --> /teams/{id}
         // fetch a single record and pass into show view
         $team->load('players');
+        $team->load('coaches');
         return view('teams.show', ["team" => $team]);
     }
 
@@ -37,7 +39,8 @@ class TeamController extends Controller
         // route --> /teams/create
         // render a create view (with web form) to users
 
-        return view('teams.create');
+        $coaches = Coach::all();
+        return view('teams.create', ["coaches" => $coaches]);
     }
 
     public function store(Request $request)
@@ -49,9 +52,10 @@ class TeamController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
             'city' => 'required|string|min:3|max:255',
+            'coach_id' => 'nullable'
         ]);
 
-        Team::create($validated);
+        $newTeam = Team::create($validated);
 
         return redirect()->route('teams.index')->with('success', 'Equipo creado');
     }

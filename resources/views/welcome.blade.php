@@ -14,6 +14,7 @@
             Jugadores
         </a>
         <a href="/teams" class="btn mt-4 inline-block">Equipos</a>
+        <a href="/coaches" class="btn mt-4 inline-block">Coaches</a>
     </div>
 </body>
 </html>
