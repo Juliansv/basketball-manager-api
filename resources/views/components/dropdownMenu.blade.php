@@ -1,7 +1,7 @@
 
 <head>
     <style>
-                :root {
+        :root {
 
             /* Colors */
 
