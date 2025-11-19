@@ -43,6 +43,8 @@ Route::get('/coaches/{coach}', [CoachController::class, 'show'])->name('coaches.
 
 Route::post('/coaches', [CoachController::class, 'store'])->name('coaches.store');
 
-Route::post('/coaches/{coach}', [CoachController::class, 'update'])->name('coaches.update');
+Route::get('/coaches/edit/{coach}', [CoachController::class, 'edit'])->name('coaches.edit');
+
+Route::put('/coaches/{coach}', [CoachController::class, 'update'])->name('coaches.update');
 
 Route::delete('/coaches/{coach}', [CoachController::class, 'destroy'])->name('coaches.destroy');

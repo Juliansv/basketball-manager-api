@@ -21,7 +21,12 @@
         @method('DELETE')
         
         <button class="btn my-4 hover:bg-red-400! cursor-pointer" type="submit">
-            Eliminar coach
+            Eliminar entrenador
         </button>
     </form>
+    <a href="{{ route('coaches.edit', $coach) }}">
+        <button class="btn my-4 hover:bg-green-400! cursor-pointer">
+                Actualizar entrenador
+        </button>
+    </a>
 </x-layout>

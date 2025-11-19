@@ -20,7 +20,7 @@ class CoachFactory extends Factory
         return [
             'firstName' => fake()->firstName(),
             'lastName' => fake()->lastName(),
-            'birthday' => fake()->dateTimeThisCentury(1990),
+            'birthday' => fake()->date('Y-m-d','now'),
             // 'team_id' => Team::inRandomOrder()->first()->id, 
         ];
     }

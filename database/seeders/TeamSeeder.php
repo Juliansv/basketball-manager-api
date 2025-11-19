@@ -14,5 +14,9 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         Team::factory()->count(5)->create();
+        Team::insert([
+            'name' => 'Vacante',
+            'city' => 'N/A',
+        ]);
     }
 }

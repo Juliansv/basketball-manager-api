@@ -7,6 +7,7 @@
                 <div>
                     <p>{{ $coach->firstName }}</p>
                     <p>{{ $coach->lastName }}</p>
+                    <p>{{ ($coach->team) ? $coach->team->name : "N/A" }}</p>
                     <p>{{ $coach->birthday }}</p>
                 </div>
             </x-card>

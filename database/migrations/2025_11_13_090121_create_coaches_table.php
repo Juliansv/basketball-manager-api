@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('firstName');
             $table->string('lastName');
-            $table->timestamp('birthday');
+            $table->date('birthday');
             $table->foreignId('team_id')->nullable()->constrained()->nullOnDelete();
         });
     }

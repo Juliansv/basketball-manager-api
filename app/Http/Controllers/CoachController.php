@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Coach;
 use App\Models\Team;
 
@@ -39,7 +40,8 @@ class CoachController
         // render a create view (with web form) to users
 
         $teams = Team::all();
-        return view('coaches.create', ["teams" => $teams]);
+        $coach = null;
+        return view('coaches.create', ["coach" => $coach, "teams" => $teams]);
     }
 
     public function store(Request $request)
@@ -56,5 +58,32 @@ class CoachController
         Coach::create($validated);
 
         return redirect()->route('coaches.index')->with('success', 'Entrenador creado');
+    }
+
+    public function edit(Coach $coach)
+    {
+        // route --> /coaches/edit/{coach}
+        // render a edit view (with web form) to users
+
+        $teams = Team::all();
+        $coach->load('team');
+        return view('coaches.create', ["coach" => $coach, "teams" => $teams]);
+    }
+
+    public function update(Request $request, Coach $coach)
+    {
+        // route --> /coaches/{coach}
+        // handle PUT request to update an existing coach record
+        $validated = $request->validate([
+            'firstName' => 'required|string|min:3|max:255',
+            'lastName' => 'required|string|min:3|max:255',
+            'birthday' => 'required|date',
+            'team_id' => 'nullable'
+        ]);
+
+
+        $coach->update($validated);
+
+        return redirect()->route('coaches.show', $coach)->with('success', 'Entrenador actualizado');
     }
 }
