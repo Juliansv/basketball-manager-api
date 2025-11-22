@@ -1,24 +1,19 @@
 <x-layout>
-    <form action="{{ route('teams.store') }}" method="POST">
+    <form action="{{ ($team) ? route('teams.update', $team) : route('teams.store') }}" method="POST">
         @csrf
+        @if ($team)
+            @method('PUT')
+        @endif
 
         <h2>Crear un nuevo Equipo</h2>
     
         <label for="name">Nombre:</label>
-        <input type="text" name="name" value="{{ old('name') }}" id="name" required>
+        <input type="text" name="name" value="{{ ($team) ? $team->name : old('name') }}" id="name" required>
     
         <label for="city">Ciudad:</label>
-        <input type="text" name="city" value="{{ old('city') }}" id="city" required>
-
-        <label for="coach_id">Entrenador:</label>
-        <select name="coach_id" id="coach_id">
-            <option value="" disabled selected>Elegir un equipo</option>
-            @foreach ($coaches as $coach)
-                <option value="{{$coach->id}}" {{old('coach_id') == $coach->id ? "selected" : ''}} >{{$coach["firstName"] }} {{ $coach["lastName"]}}</option>
-            @endforeach
-        </select>
+        <input type="text" name="city" value="{{ ($team) ? $team->city : old('city') }}" id="city" required>
     
-        <button type="submit" class="btn mt-4">Crear equipo</button>
+        <button type="submit" class="btn mt-4">{{($team) ? "Actualizar equipo" : "Crear equipo"}}</button>
 
         @if ($errors->any())
             <ul class="px-4 py-2 bg-red-100">

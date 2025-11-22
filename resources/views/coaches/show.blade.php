@@ -26,7 +26,7 @@
     </form>
     <a href="{{ route('coaches.edit', $coach) }}">
         <button class="btn my-4 hover:bg-green-400! cursor-pointer">
-                Actualizar entrenador
+                Editar entrenador
         </button>
     </a>
 </x-layout>

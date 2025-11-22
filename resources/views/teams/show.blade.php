@@ -50,4 +50,9 @@
             Eliminar equipo
         </button>
     </form>
+    <a href="{{ route('teams.edit', $team) }}">
+        <button class="btn my-4 hover:bg-green-400! cursor-pointer" type="submit">
+            Editar equipo
+        </button>
+    </a>
 </x-layout>

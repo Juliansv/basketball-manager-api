@@ -39,8 +39,8 @@ class TeamController extends Controller
         // route --> /teams/create
         // render a create view (with web form) to users
 
-        $coaches = Coach::all();
-        return view('teams.create', ["coaches" => $coaches]);
+        $team = null;
+        return view('teams.create', ["team" => $team]);
     }
 
     public function store(Request $request)
@@ -58,5 +58,31 @@ class TeamController extends Controller
         $newTeam = Team::create($validated);
 
         return redirect()->route('teams.index')->with('success', 'Equipo creado');
+    }
+
+    public function edit(Team $team)
+    {
+        // route --> /teams/edit/{team}
+        // render a edit view (with web form) to users
+
+        return view('teams.create', ["team" => $team]);
+    }
+
+
+    public function update(Request $request, Team $team)
+    {
+        // route --> /teams/{team}
+        // handle PUT request to update an existing team record
+
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'city' => 'required|string|min:3|max:255',
+            'coach_id' => 'nullable'
+        ]);
+
+
+        $team->update($validated);
+
+        return redirect()->route('teams.show', $team)->with('success', 'Equipo actualizado');
     }
 }
