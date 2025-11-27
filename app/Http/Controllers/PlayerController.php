@@ -59,4 +59,33 @@ class PlayerController extends Controller
 
         return redirect()->route('players.index')->with('success', 'Jugador eliminado');
     }
+
+    public function edit(Player $player)
+    {
+        // route --> /players/edit/{player}
+        // render a edit view (with web form) to users
+
+        $teams = Team::all();
+        $player->load('team');
+        return view('players.create', ["player" => $player, "teams" => $teams]);
+    }
+
+    public function update(Request $request, Player $player)
+    {
+        // route --> /players/{player}
+        // handle PUT request to update an existing team record
+
+        $validated = $request->validate([
+            'firstName' => 'required|string|min:3|max:255',
+            'lastName' => 'required|string|min:3|max:255',
+            'height' => 'integer|min:20|max:300',
+            'weight' => 'integer|min:20|max:300',
+            'birthday' => 'required|date',
+            'team_id' => 'nullable'
+        ]);
+
+        $player->update($validated);
+
+        return redirect()->route('players.show', $player)->with('success', 'Equipo actualizado');
+    }
 }

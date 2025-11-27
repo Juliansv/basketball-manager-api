@@ -30,4 +30,10 @@
             Eliminar jugador
         </button>
     </form>
+
+    <a href="{{ route('players.edit', $player) }}">
+        <button class="btn my-4 hover:bg-green-400! cursor-pointer" type="submit">
+            Editar jugador
+        </button>
+    </a>
 </x-layout>

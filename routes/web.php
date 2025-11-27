@@ -19,6 +19,10 @@ Route::get('/players/{player}', [PlayerController::class, 'show'])->name('player
 
 Route::post('/players', [PlayerController::class, 'store'])->name('players.store');
 
+Route::get('/players/edit/{player}', [PlayerController::class, 'edit'])->name('players.edit');
+
+Route::put('/players/{player}', [PlayerController::class, 'update'])->name('players.update');
+
 Route::delete('/players/{player}', [PlayerController::class, 'destroy'])->name('players.destroy');
 
 // Routes for teams

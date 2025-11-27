@@ -22,7 +22,7 @@ class PlayerFactory extends Factory
             'lastName' => fake()->lastName(),
             'height' => fake()->numberBetween(150, 200),
             'weight' => fake()->numberBetween(60, 110),
-            'birthday' => fake()->dateTimeThisCentury(2010),
+            'birthday' => fake()->date('Y-m-d','now'),
             // 'team_id' => Team::inRandomOrder()->first()->id,
         ];
     }
